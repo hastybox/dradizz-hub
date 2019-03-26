@@ -63,6 +63,34 @@ lazy val core = Project(
   )
   .settings(commonSettings: _*)
 
+lazy val movies = Project(
+  id = "dradizz-hub-movies",
+  base = file("movies")
+)
+  .settings(
+    libraryDependencies ++= {
+      import dependencies._
+      Seq(
+      )
+    }
+  )
+  .settings(commonSettings: _*)
+  .dependsOn(core)
+
+lazy val tv = Project(
+  id = "dradizz-hub-tv",
+  base = file("tv")
+)
+  .settings(
+    libraryDependencies ++= {
+      import dependencies._
+      Seq(
+      )
+    }
+  )
+  .settings(commonSettings: _*)
+  .dependsOn(core)
+
 lazy val app = Project(
   id = "dradizz-hub-app",
   base = file("app")
@@ -77,10 +105,10 @@ lazy val app = Project(
   )
   .settings(commonSettings: _*)
   .enablePlugins(JavaAppPackaging, UniversalDeployPlugin)
-  .dependsOn(core)
+  .dependsOn(movies, tv)
 
 
 lazy val `dradizz-hub` = (project in file("."))
   .settings(commonSettings: _*)
-  .aggregate(core, app)
+  .aggregate(core, movies, tv, app)
 
