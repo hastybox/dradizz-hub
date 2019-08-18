@@ -1,5 +1,7 @@
 val versions = new {
-  val http4s = "0.21.0-M2"
+  val cats = "2.0.0-RC1"
+  val catsEffect = cats
+  val http4s = "0.21.0-M4"
   val logback = "1.2.3"
   val slf4j = "1.7.26"
   val commonsIo = "2.6"
@@ -15,8 +17,10 @@ val versions = new {
 val dependencies = {
   import versions._
   new {
+    val `cats-core` = "org.typelevel" %% "cats-core" % cats
+    val `cats-effect` = "org.typelevel" %% "cats-effect" % catsEffect
     val `http4s-blaze-server` = "org.http4s" %% "http4s-blaze-server" % http4s
-    val `http4s-async-http-client` = "org.http4s" %% "http4s-blaze-client" % http4s
+    val `http4s-blaze-client` = "org.http4s" %% "http4s-blaze-client" % http4s
     val `http4s-circe` = "org.http4s" %% "http4s-circe" % http4s
     val `http4s-dsl` = "org.http4s" %% "http4s-dsl" % http4s
     val `commons-io` = "commons-io" % "commons-io" % commonsIo
@@ -32,7 +36,7 @@ val dependencies = {
 }
 
 val commonSettings = Seq(
-  organization := "com.hastybox.dradizz",
+  organization := "com.hastybox.dradizz.hub",
   version := "0.0.1-SNAPSHOT",
   scalaVersion := versions.scala,
   scalacOptions := Seq("-unchecked", "-deprecation", "-feature", "-encoding", "utf8"),
@@ -52,18 +56,6 @@ lazy val core = Project(
     libraryDependencies ++= {
       import dependencies._
       Seq(
-        `http4s-blaze-server`,
-        `http4s-circe`,
-        `http4s-dsl`,
-        `http4s-async-http-client`,
-        `commons-io`,
-        pureconfig,
-        refined,
-        guava,
-        `scala-test`,
-        scalacheck,
-        `scala-logging`,
-        `logback-classic`
       )
     }
   )

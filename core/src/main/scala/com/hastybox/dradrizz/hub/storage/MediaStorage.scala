@@ -3,10 +3,8 @@ package com.hastybox.dradrizz.hub.storage
 import scala.language.higherKinds
 
 /**
-  * Stores Media information
-  *
-  * @author Patrick Sy (patrick.sy@get-it.us)
-  */
+ * Stores Media information
+ */
 trait MediaStorage[F[_], Media, MediaId] {
 
   def save(media: Media): F[Unit]

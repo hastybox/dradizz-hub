@@ -3,16 +3,14 @@ package com.hastybox.dradizz.hub.movies
 import com.hastybox.dradizz.hub.movies.MovieIds.{ImdbId, MovieDbId, TraktId}
 
 /**
-  * TODO: Comment
-  *
-  * @author Patrick Sy (patrick.sy@get-it.us)
-  */
+ * TODO: Comment
+ */
 case class Movie()
 
 case class MovieIds(
-                   imdb: ImdbId,
-                   trakt: TraktId,
-                   movieDb: MovieDbId
+                     imdb: ImdbId,
+                     trakt: TraktId,
+                     movieDb: MovieDbId
                    )
 
 object MovieIds {
