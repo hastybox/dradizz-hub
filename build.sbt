@@ -1,17 +1,18 @@
 val versions = new {
-  val cats = "2.0.0-RC1"
+  val cats = "2.0.0"
   val catsEffect = cats
-  val http4s = "0.21.0-M4"
+  val http4s = "0.21.0-M5"
   val logback = "1.2.3"
-  val slf4j = "1.7.26"
   val commonsIo = "2.6"
   val pureconfig = "0.11.1"
   val refined = "0.9.8"
   val guava = "28.0-jre"
-  val scala = "2.13.0"
+  val scala = "2.13.1"
   val scalaLogging = "3.9.2"
   val scalaTest = "3.0.8"
   val scalaCheck = "1.14.0"
+  val mockito = "1.6.2"
+  val log4cats = "1.0.0"
 }
 
 val dependencies = {
@@ -29,9 +30,12 @@ val dependencies = {
     val guava = "com.google.guava" % "guava" % versions.guava
     val `logback-classic` = "ch.qos.logback" % "logback-classic" % logback
     val `scala-logging` = "com.typesafe.scala-logging" %% "scala-logging" % scalaLogging
-    val `slf4j-api` = "org.slf4j" % "slf4j-api" % slf4j
     val `scala-test` = "org.scalatest" %% "scalatest" % scalaTest % "test"
     val scalacheck = "org.scalacheck" %% "scalacheck" % scalaCheck % "test"
+    val `mockito-scala` = "org.mockito" %% "mockito-scala" % versions.mockito % "test"
+    val `mockito-scala-scalatest` = "org.mockito" %% "mockito-scala-scalatest" % versions.mockito % "test"
+    val `mockito-scala-cats` = "org.mockito" %% "mockito-scala-cats" % versions.mockito % "test"
+    val `log4cats-slf4j` = "io.chrisdavenport" %% "log4cats-slf4j" % versions.log4cats
   }
 }
 
@@ -43,7 +47,6 @@ val commonSettings = Seq(
   dependencyOverrides ++= {
     import dependencies._
     Seq(
-    `slf4j-api`
     )
   }
 )
